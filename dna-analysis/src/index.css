@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+hr {
+  clear: both;
+  visibility: hidden;
+  background-color: #FFFAFA;
+}
+
+h1,h2,h3{
+  display: flex;
+  justify-content: center;
+  text-decoration: underline;
+}
+
+html{
+  background-color: #FFFAFA;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.MuiPaper-root.MuiCard-root.MuiPaper-elevation1.MuiPaper-rounded
+{
+  background-color: #F5F5F5;
+}
