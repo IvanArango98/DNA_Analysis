@@ -12,6 +12,7 @@ import FactCheckIcon from '@mui/icons-material/FactCheck';
 const WebCampComp = () => {
 
     var [NumeroID_imagen1, setNumeroID_imagen1] = React.useState(null);
+    var [Resultados, setResultados] = React.useState(null);
     var [NumeroID_imagen2, setNumeroID_imagen2] = React.useState(null);
     var [confidencia, setconfidencia] = React.useState(null);
     var [similitud, setSimilitud] = React.useState(null);
@@ -105,8 +106,8 @@ const WebCampComp = () => {
             .then(response => response.json())
             .then(
                 (result) => {
-                    console.log(result.confidence)
-                    confidencia = result.confidence
+                    setResultados(JSON.stringify({"Porcentaje de parentezco" : result.confidence, "Bandera parentezco" : result.isIdentical}))
+                    confidencia = result                    
                     setconfidencia(confidencia);
                     Familiaridad(result.confidence)
                 })
@@ -276,6 +277,8 @@ const WebCampComp = () => {
                 endIcon={<FactCheckIcon/>}
                 onClick={() => handleClickVerify()}>Verificar</Button_>
             </Grid>
+            <hr></hr>                
+            {Resultados}
 
         </div>
     );

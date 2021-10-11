@@ -5,7 +5,7 @@ import {
   CardContent,
   Button,
   Grid,
-} from "@material-ui/core";
+} from "@mui/material";
 import {Mensajes_Inicio} from './Mensajes/MensajeInicio'
 import BasicTabs from './Separador/Index'
 

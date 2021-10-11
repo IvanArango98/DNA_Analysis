@@ -27,7 +27,8 @@ class ImagenComp extends Component {
             similitud: null,
 
             cargando: false,
-            flagData: false
+            flagData: false,
+            Resultados: null
         };
         this.handleFaceID_Image1 = this.handleFaceID_Image1.bind(this);
         this.handleFaceID_Image2 = this.handleFaceID_Image2.bind(this);
@@ -167,7 +168,7 @@ class ImagenComp extends Component {
             .then(response => response.json())
             .then(
                 (result) => {
-                    console.log(result.confidence)
+                    this.setState({Resultados: JSON.stringify({"Porcentaje de parentezco" : result.confidence, "Bandera parentezco" : result.isIdentical})})
                     this.setState({ confidencia: result.confidence })
                     this.Familiaridad(result.confidence)
                 })
@@ -308,7 +309,9 @@ const Input = styled('input')({
                         onClick={() => this.handleClickVerify()}>Verificar
                         </Button_>  
                         <hr></hr>
-                        </Grid>                                            
+                        </Grid>  
+                        <hr></hr>                
+            {this.state.Resultados}                                          
             </div>
         );
     }
