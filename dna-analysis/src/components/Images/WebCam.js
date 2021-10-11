@@ -1,9 +1,13 @@
 import React from "react";
 import Webcam from "react-webcam";
-import { Container, Col, Row, Button } from 'react-bootstrap';
 import $ from "jquery";
 import emailjs from "emailjs-com"
-
+import {Mensajes_Inicio} from '../Mensajes/MensajeInicio'
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import Button_ from '@mui/material/Button';
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import FactCheckIcon from '@mui/icons-material/FactCheck';
 
 const WebCampComp = () => {
 
@@ -31,7 +35,7 @@ const WebCampComp = () => {
                     url: "https://somosfamiliares2021.cognitiveservices.azure.com/face/v1.0/detect",
                     contentType: "application/octet-stream",
                     headers: {
-                        'Ocp-Apim-Subscription-Key': '5af66410-c75d-4717-93ee-f8e2a0c5b1d9'
+                        'Ocp-Apim-Subscription-Key': '0a79e9e8648d48559c90d8b99a0ccccd'
                     },
                     processData: false,
                     data: blobData
@@ -85,7 +89,7 @@ const WebCampComp = () => {
     function handleClickVerify() {
         ADN();
         var myHeaders = new Headers();
-        myHeaders.append("Ocp-Apim-Subscription-Key", "91d74c8e362941f9bbce92f931ee40d0");
+        myHeaders.append("Ocp-Apim-Subscription-Key", "0a79e9e8648d48559c90d8b99a0ccccd");
         myHeaders.append("Content-Type", "application/json");
 
         var data = JSON.stringify({ "faceId1": NumeroID_imagen1, "faceId2": NumeroID_imagen2 });
@@ -109,6 +113,7 @@ const WebCampComp = () => {
             .catch(error => console.log('error', error));
     }
 
+ 
     function ADN() {
         cargando = true
         setCargando(cargando);
@@ -193,75 +198,85 @@ const WebCampComp = () => {
 
     return (
         <div>
-            <Container className="border border-dark bg-light rounded">
+            <Grid xs={12} md={12} lg={12}>
                 <br></br>
-                <h3>Tomate dos fotografias</h3>
-                <hr className="bg-dark" />
-                <Row>
-                    <Col>
+                <h3>{Mensajes_Inicio.MensajeImagenWeb}</h3>
+                <hr/>
+                
+                <Grid container xs={12} md={12} lg={12} spacing={3}>
+
+                <Grid item xs={12} md={12} lg={12}>
+                <Paper elevation={2}>
+                <hr/>
+                <Button_ onClick={capture} style={{display:"flex",marginLeft:"auto",marginRight:"auto"}} 
+                endIcon={<PhotoCameraIcon/>}
+                >{Mensajes_Inicio.TomaFoto1}</Button_>
+                <hr/>
+                <Grid container  spacing={1} style={{display:"flex",marginLeft:"auto",marginRight:"auto"}} >
+                <Grid container  xs={12} md={6} lg={6} item >                
                         <Webcam
-                            width="100%"
+                            width="90%"
                             height="100%"
                             audio={false}
                             ref={webcamRef}
                             screenshotFormat="image/jpeg"
                         />
-                    </Col>
-
-                    <Col>
+                        </Grid>
+                        <Grid container  xs={12} md={6} lg={6} item >                
                         {imgSrc && (
                             <img
                                 src={imgSrc}
+                                style={{width:"90%"}}
                             />
                         )}
-                    </Col>
-                </Row>
+                        </Grid>
+                        </Grid>
+                        <hr></hr>
+                </Paper>
+                </Grid>
+                    
 
-                <Row >
-                    <Col />
-                    <Col>
-                        <Button onClick={capture}>Tomar foto</Button>
-                    </Col>
-                    <Col /><Col /><Col />
-                </Row>
-
-                <hr className="bg-dark" />
-
-                <Row>
-                    <Col>
+                <hr/>
+                
+                <Grid item xs={12} md={12} lg={12}>
+                <Paper elevation={2}>       
+                <hr/>         
+                <Button_ onClick={capture2} style={{display:"flex",marginLeft:"auto",marginRight:"auto"}}
+                endIcon={<PhotoCameraIcon/>}
+                >{Mensajes_Inicio.TomaFoto2}</Button_>   
+                <hr/>
+                <Grid container  spacing={1} style={{display:"flex",marginLeft:"auto",marginRight:"auto"}} >
+                <Grid container  xs={12} md={6} lg={6} item >                
                         <Webcam
-                            width="100%"
+                            width="90%"
                             height="100%"
                             audio={false}
                             ref={webcamRef}
                             screenshotFormat="image/jpeg"
                         />
-                    </Col>
-
-                    <Col>
+                        </Grid>
+                        <Grid container  xs={12} md={6} lg={6} item >          
                         {imgSrc2 && (
                             <img
                                 src={imgSrc2}
+                                style={{width:"90%"}}
                             />
                         )}
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col />
-                    <Col>
-                        <Button onClick={capture2}>Tomar foto</Button>
-                    </Col>
-                    <Col /><Col /><Col />
-                </Row>
-                <br />
-                <hr className="bg-dark" />
-                <br />
+                        </Grid>
+                        </Grid>
+                        <hr></hr>
+                        </Paper>                 
+                        </Grid>                        
                 
-                <Button size="lg" block
-                    variant="success" onClick={() => handleClickVerify()}>Verificar</Button>
-                <hr></hr>
-            </Container>
+                </Grid>
+                <hr></hr>                
+                <Button_ 
+                variant="contained" 
+                style={{width:"97%"}}
+                endIcon={<FactCheckIcon/>}
+                onClick={() => handleClickVerify()}>Verificar</Button_>
+            </Grid>
+
         </div>
     );
 };
