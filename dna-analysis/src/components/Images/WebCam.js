@@ -105,9 +105,9 @@ const WebCampComp = () => {
         fetch("https://somosfamiliares2021.cognitiveservices.azure.com/face/v1.0/verify", requestOptions)
             .then(response => response.json())
             .then(
-                (result) => {
-                    setResultados(JSON.stringify({"Porcentaje de parentezco" : result.confidence, "Bandera parentezco" : result.isIdentical}))
-                    confidencia = result                    
+                (result) => {                
+                    console.log(result.confidence)
+                    confidencia = result.confidence
                     setconfidencia(confidencia);
                     Familiaridad(result.confidence)
                 })
@@ -163,7 +163,7 @@ const WebCampComp = () => {
     function MostrarResultado() {
         return (
             <div>
-                <h3>Similitud de: {confidencia * 100}%</h3>
+                <h3>El porcentaje de similitud es: {confidencia * 100}%</h3>
                 <hr></hr>
                 <h3>{similitud}</h3>
             </div>
@@ -277,9 +277,16 @@ const WebCampComp = () => {
                 endIcon={<FactCheckIcon/>}
                 onClick={() => handleClickVerify()}>Verificar</Button_>
             </Grid>
-            <hr></hr>                
-            {Resultados}
-
+            <hr></hr>      
+                      
+            <Grid container xs={12} md={12} lg={12} style={{display:"flex", justifyContent:"center"}}>                    
+                            {cargando ? (
+                                <img src={"https://media.giphy.com/media/3o7TKz2eMXx7dn95FS/giphy.gif"} />
+                            ) : null}                    
+                </Grid>
+                <br></br>
+                <hr className="bg-dark" />
+                {Mostrar()}                
         </div>
     );
 };
