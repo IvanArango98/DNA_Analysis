@@ -168,7 +168,7 @@ class ImagenComp extends Component {
             .then(response => response.json())
             .then(
                 (result) => {
-                    this.setState({Resultados: JSON.stringify({"Porcentaje de parentezco" : result.confidence, "Bandera parentezco" : result.isIdentical})})
+                    console.log(result.confidence)
                     this.setState({ confidencia: result.confidence })
                     this.Familiaridad(result.confidence)
                 })
@@ -311,7 +311,15 @@ const Input = styled('input')({
                         <hr></hr>
                         </Grid>  
                         <hr></hr>                
-            {this.state.Resultados}                                          
+                        <Grid container xs={12} md={12} lg={12} style={{display:"flex", justifyContent:"center"}}>                    
+                        {this.state.cargando ? (
+                                    <img src={"https://media.giphy.com/media/3o7TKz2eMXx7dn95FS/giphy.gif"} />
+                                ) : this.state.mostrarData}             
+                </Grid>
+                <br></br>
+                <hr className="bg-dark" />
+                {this.Mostrar()}
+
             </div>
         );
     }
