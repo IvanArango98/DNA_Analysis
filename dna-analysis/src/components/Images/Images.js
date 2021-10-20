@@ -8,6 +8,8 @@ import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
 import ImageIcon from '@mui/icons-material/Image';
+import Compartir from '../Compartir/Compartir'
+import { TextField } from '@mui/material';
 
 class ImagenComp extends Component {
     constructor(props) {
@@ -319,6 +321,17 @@ const Input = styled('input')({
                 <br></br>
                 <hr className="bg-dark" />
                 {this.Mostrar()}
+                {
+                    this.state.confidencia === null ?
+                    null              
+                    : null
+                }
+                
+
+                <Compartir                
+                Porcentaje={this.state.confidencia}
+                Parezenteco={this.state.similitud}                
+                />      
 
             </div>
         );
