@@ -8,10 +8,13 @@ import {
 } from "@mui/material";
 import {Mensajes_Inicio} from './Mensajes/MensajeInicio'
 import BasicTabs from './Separador/Index'
+import TopMenu from './NavBar/navbar'
 
 const Main = () => {
   return (
     <div>      
+      <TopMenu/>      
+      <hr/>      <hr/>      <hr/>      <hr/>      
       <Grid container xs={12} md={12} lg={12} style={{display:"flex",justifyContent:"center",backgroundColor:"#FFFAFA",marginTop:"30px"}}>
         <Grid item xs={11} md={11} lg={11}>
             <Card>

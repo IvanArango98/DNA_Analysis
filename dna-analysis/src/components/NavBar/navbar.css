@@ -1,0 +1,31 @@
+#navbar
+{
+    z-index: 9999 !important;
+}
+#navbar #navbar-sub-brand{
+    font-size: 15px;
+}
+
+
+#navbar #Dropdown-header 
+{
+    width: 200px;
+}
+
+#navbar #Dropdown-header .row:nth-child(1){
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#navbar #Dropdown-header .row:nth-child(2){
+    margin-top: 10px;
+    font-size: 16px;  
+    display: flex;  
+    justify-content: center;  
+}
+
+.btn, .btn-large, .btn-small
+{
+    background-color: #0d6efd !important;
+}
