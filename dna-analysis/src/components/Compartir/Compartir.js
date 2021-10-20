@@ -14,18 +14,28 @@ import React,{useEffect,useState} from 'react';
   } from "react-share";
 
 const Compartir = (props) => {
-    const {Porcentaje,Parezenteco} =props    
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    const [Opcion,setOpcion] = React.useState("")
-    const URL = `https://dna-analysis-cb722.web.app/Resultados?Porcentaje=${Porcentaje}&Paretenzco=${Parezenteco}` 
+    const {Porcentaje,Parezenteco} =props        
+        const [Url_,setUrl] = useState("")
+        const [Nombre,setNombre] = useState("")
+        const URL = `https://dna-analysis-cb722.web.app/Resultados?Porcentaje=${Porcentaje}&Parentezco=${Parezenteco}&url=${Url_}&Nombre=${Nombre}`          
 
-    function Activar()
-    {
-        setOpcion("email")
-        handleOpen()
-    }
+        useEffect(() =>{
+          let fbdata = JSON.parse(localStorage.getItem('fbData'))
+          let googledata = JSON.parse(localStorage.getItem('googleData'))     
+    
+          if(fbdata !== null)
+          {
+              setUrl(fbdata.picture)
+              setNombre(fbdata.name)        
+          }
+          else if(googledata !== null){
+            setUrl(
+              btoa(googledata.picture)
+              )
+            setNombre(googledata.name)                
+          }
+    
+        },[])
 
     return(
         <div>                    

@@ -1,11 +1,14 @@
 import React,{useEffect,useState} from 'react';
 import {Card,CardContent,Grid} from '@mui/material';
+import Avatar from '@mui/material/Avatar';
+
 const Compartir = () => {
 
     const queryParams = new URLSearchParams(window.location.search);
-    const Porcentaje = queryParams.get('Porcentaje');
-    const name = queryParams.get('name');
-    const Parezenteco = queryParams.get('Parezenteco');
+    const Porcentaje = queryParams.get('Porcentaje');    
+    const Parezenteco = queryParams.get('Parentezco');
+    const url = queryParams.get('url');
+    const Nombre = queryParams.get('Nombre');
 
     return(
         <div 
@@ -23,14 +26,23 @@ const Compartir = () => {
            <Card>
            <CardContent>
             <h1 style={{color:"black"}}>
-                Resultados análisis                
+                Resultados análisis 
             </h1>
             <h4 style={{color:"black"}}>
-                Similitud: {Parezenteco}             
+            <Avatar alt="Sin foto de perfil" src={atob(url)}
+                          sx={{ width: 56, height: 56 }}
+                        />
+                            {
+                                Nombre
+                            }
+            </h4>
+            <h4 style={{color:"black"}}>
+                Similitud: {(Parezenteco)}             
             </h4>
             <h4 style={{color:"black"}}>
                 Porcentaje: {Porcentaje}             
             </h4>
+            
             </CardContent>
             </Card>
             </Grid>
