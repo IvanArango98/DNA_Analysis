@@ -84,16 +84,6 @@ class Login extends React.Component {
         {
             window.location.href = "/Inicio"
         }
-
-        const handleSubmit = (event) => {
-            event.preventDefault();
-            const data = new FormData(event.currentTarget);
-            // eslint-disable-next-line no-console
-            console.log({
-              email: data.get('email'),
-              password: data.get('password'),
-            });
-          };
           const theme = createTheme();
 
         return (             
@@ -159,6 +149,7 @@ class Login extends React.Component {
 
                             <GoogleLogin
                             clientId="627355732789-aieiidihm7qb0ri5intqtb4a4lpb827o.apps.googleusercontent.com"
+                            clientS
                             autoLoad={false}
                             onSuccess={this.responseGoogle}
                             onFailure={this.onFailure}                            

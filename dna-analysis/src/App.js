@@ -1,7 +1,7 @@
 import Main from './components/Index'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from './components/Login/Login'
-
+import Compartir from './components/Compartir';
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={ Login }/>
                     <Route path="/Inicio" component={Main}/>                                                         
+                    <Route path="/Resultados" component={Compartir}/>      
                     <Route  path="*" component={() => <h1 style={{marginTop:200}}>404 <br/>Página no Encontrada</h1>}/>1
                 </Switch>                
             </Router>
