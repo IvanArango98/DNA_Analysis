@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import Button_ from '@mui/material/Button';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import FactCheckIcon from '@mui/icons-material/FactCheck';
+import Compartir from '../Compartir/Compartir'
 
 const WebCampComp = () => {
 
@@ -286,7 +287,13 @@ const WebCampComp = () => {
                 </Grid>
                 <br></br>
                 <hr className="bg-dark" />
-                {Mostrar()}                
+                {Mostrar()}      
+
+                
+                <Compartir                
+                Porcentaje={confidencia}
+                Parezenteco={similitud}                
+                />                
         </div>
     );
 };
