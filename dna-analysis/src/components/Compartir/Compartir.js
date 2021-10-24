@@ -17,25 +17,37 @@ const Compartir = (props) => {
     const {Porcentaje,Parezenteco} =props        
         const [Url_,setUrl] = useState("")
         const [Nombre,setNombre] = useState("")
-        const URL = `https://dna-analysis-cb722.web.app/Resultados?Porcentaje=${Porcentaje}&Parentezco=${Parezenteco}&url=${Url_}&Nombre=${Nombre}`          
-
+        const [Pare,setPare] = useState("");
+        const URL = `https://dna-analysis-cb722.web.app/Resultados?Porcentaje=${Porcentaje}&Parentesco=${Pare}&url=${Url_}&Nombre=${Nombre}`          
+        
         useEffect(() =>{
           let fbdata = JSON.parse(localStorage.getItem('fbData'))
           let googledata = JSON.parse(localStorage.getItem('googleData'))     
     
           if(fbdata !== null)
           {
-              setUrl(fbdata.picture)
-              setNombre(fbdata.name)        
+              setUrl( btoa(fbdata.picture));
+              setNombre(fbdata.name.replace(" ","%20%"));        
           }
           else if(googledata !== null){
-            setUrl(
-              btoa(googledata.picture)
-              )
-            setNombre(googledata.name)                
+            setUrl(btoa(googledata.picture));
+            setNombre(googledata.name.replace(" ","%20%"));                
           }
     
         },[])
+
+        useEffect(() => {          
+          if(Parezenteco !== null)
+          {            
+            let tmp = Parezenteco.split(" ");
+            let nuevo = "";
+            Object.keys(tmp).forEach(index => {
+                nuevo += tmp[index] + "%20%"   
+            })
+            setPare(nuevo.substring(0,nuevo.length - 4));        
+          }          
+        },[Parezenteco])
+    
 
     return(
         <div>                    

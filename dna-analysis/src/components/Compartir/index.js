@@ -6,10 +6,33 @@ const Compartir = () => {
 
     const queryParams = new URLSearchParams(window.location.search);
     const Porcentaje = queryParams.get('Porcentaje');    
-    const Parezenteco = queryParams.get('Parentezco');
+    const Parezenteco = queryParams.get('Parentesco');
     const url = queryParams.get('url');
     const Nombre = queryParams.get('Nombre');
 
+    function Cambiar(cadena)
+    {        
+        let tmp = cadena.split("%20%");
+            let nuevo = "";
+            Object.keys(tmp).forEach(index => {
+                nuevo += tmp[index] + " "   
+            })
+
+            return nuevo.replace("%","");
+    }
+
+    function Cambiar2(cadena)
+    {        
+        let tmp = cadena.split("%");
+            let nuevo = "";
+            Object.keys(tmp).forEach(index => {
+                nuevo += tmp[index] + " "   
+            })
+
+            return nuevo.replace("�","");
+    }
+
+console.log(Parezenteco)
     return(
         <div 
         style={{ 
@@ -33,14 +56,14 @@ const Compartir = () => {
                           sx={{ width: 56, height: 56 }}
                         />
                             {
-                                Nombre
+                                Cambiar(Nombre)
                             }
             </h4>
             <h4 style={{color:"black"}}>
-                Similitud: {(Parezenteco)}             
+                Similitud: {Cambiar2(Parezenteco)}             
             </h4>
             <h4 style={{color:"black"}}>
-                Porcentaje: {Porcentaje}             
+                {"Porcentaje: "+ (Porcentaje * 100) + " %"}
             </h4>
             
             </CardContent>
